@@ -93,7 +93,7 @@
 <body>
   <div class="container">
     <div class="age-calculator">
-      <h1 class="heading"> Age Calculator</h1>
+      <h1 class="heading"><i class="fas fa-calculator"></i> Age Calculator</h1>
       <div class="controls">
         <input type="date" id="date">
         <button id="calculate">Calculate</button>
@@ -101,13 +101,18 @@
       <div class="result"></div>
     </div>
   </div>
-<script>
+
+
+
+
+  <script>
     // selecting the elements
 var date = document.getElementById('date');
 var calculate = document.getElementById('calculate');
+var result = document.querySelector('.result');
 
 
- 
+
 function calculateAge() {
   var today = new Date();
   var birthDate = new Date(date.value);
@@ -132,20 +137,29 @@ function calculateAge() {
   // make month positive
   months = months < 0 ? months + 12 : months;
 
+  // Calculate days
+  var days;
+  // days of months in a year
+  var monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (today.getDate() >= birthDate.getDate()) {
+    days = today.getDate() - birthDate.getDate();
+  } else {
+    days = today.getDate() - birthDate.getDate() + monthDays[birthDate.getMonth()];
+  }
 
   // Display result
-
-  if (years < 18) {
-    alert("Sorry you're below 18years old");
+  result.innerHTML = `<p class="birthdate">You were born on ${birthDate.toDateString()}.</p>`;
+  result.innerHTML += `<p class="age">You are ${years} years, ${months} months and ${days} days old.</p>`;
   }
-  else{
-    alert("Congrats you above 18years old");
-  }
-}
-calculate.addEventListener('click', calculateAge);
 
-</script>
+ calculate.addEventListener('click', calculateAge); 
 
+
+  </script>
 </body>
+
+
+
+
 
 </html>
