@@ -25,12 +25,13 @@
 }
 
 .age-calculator {
+  
   background: #fafafa;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  background-color: #e2b144;
-}
+  background-color: rgb(190, 166, 30);
+} 
 
 .heading {
   font-size: 2.5rem;
@@ -39,12 +40,12 @@
   color: #000000;
 }
 
-.controls {
+/* .controls {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-}
+} */
 
 .controls input {
   width: 200px;
@@ -95,7 +96,12 @@
     <div class="age-calculator">
       <h1 class="heading"><i class="fas fa-calculator"></i> Age Calculator</h1>
       <div class="controls">
-        <input type="date" id="date">
+        <label><b>Firstname :</b></label>
+        <input type="text" name="" id="first" placeholder="Firstname"> <br> <br>
+        <label><b>Lastname :</b></label>
+        <input type="text" name="" id="last" placeholder="Lastname"> <br> <br>
+        <label style="margin-right:13%;"><b>Age :</b></label>
+        <input type="date" id="date" > <br> <br>
         <button id="calculate">Calculate</button>
       </div>
       <div class="result"></div>
@@ -114,6 +120,8 @@ var result = document.querySelector('.result');
 
 
 function calculateAge() {
+  var firstname = document.getElementById("first").value;
+  var Lastname = document.getElementById('last').value
   var today = new Date();
   var birthDate = new Date(date.value);
 
@@ -148,7 +156,7 @@ function calculateAge() {
   }
 
   // Display result
-  result.innerHTML = `<p class="birthdate">You were born on ${birthDate.toDateString()}.</p>`;
+  result.innerHTML = `<p class="birthdate">Dear, <b> ${firstname} </b>  born on ${birthDate.toDateString()}.</p>`;
   result.innerHTML += `<p class="age">You are ${years} years, ${months} months and ${days} days old.</p>`;
   }
 
